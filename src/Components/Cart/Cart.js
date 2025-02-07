@@ -5,8 +5,12 @@ import { ReactComponent as Cross } from "../../Resources/image/cross.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedCart from '../../Containers/AnimatedPage/AnimatedCart';
 import AnimatedCard from '../../Containers/AnimatedPage/AnimatedCard';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../utils/AuthContext';
 
 const Cart = props => {
+    const navigate = useNavigate();
+    const { user } = useAuth();
     const {
         cartAmount,
         cart,
@@ -85,8 +89,17 @@ const Cart = props => {
                                   id="24" 
                                   onMouseEnter={handleHover} 
                                   onMouseLeave={handleHover} 
+                                  onClick={() => {
+                                    if (!user) {
+                                      alert('Please sign in to proceed with checkout');
+                                      return;
+                                    }
+                                    handleCloseCart();
+                                    navigate('/checkout');
+                                  }}
                                   style={{ color: hoverState[24].hovered ? "#92f" : "#fff" }} 
                                   aria-label="Checkout"
+                                  disabled={cartAmount === 0}
                                 >
                                     Checkout
                                     <Right 

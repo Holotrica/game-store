@@ -18,6 +18,8 @@ import games from "./utils/games";
 import templateGame from "./utils/templateGame";
 import { AuthProvider } from './utils/AuthContext';
 import Login from './Components/Login';
+import Checkout from './Components/Checkout/Checkout';
+import CheckoutSuccess from './Components/Checkout/CheckoutSuccess';
 
 function AppContent() {
   const [currentFilter, setCurrentFilter] = useState("none");
@@ -453,6 +455,21 @@ function AppContent() {
               handleRemoveFromCart={handleRemoveFromCart}
               openGamePage={openGamePage}
             />
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <Checkout
+              cart={cart}
+              totalAmount={cart.reduce((total, item) => total + item.price, 0)}
+            />
+          }
+        />
+        <Route
+          path="/checkout/success"
+          element={
+            <CheckoutSuccess />
           }
         />
         <Route

@@ -1,0 +1,92 @@
+.success_container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.loading,
+.success,
+.failed {
+  background: rgba(38, 38, 38, 0.9);
+  padding: 3rem;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loading h2,
+.success h1,
+.failed h1 {
+  margin-bottom: 1.5rem;
+  font-family: "GT Bold";
+}
+
+.success p,
+.failed p {
+  margin: 0.5rem 0;
+  color: #cccccc;
+  font-size: 1.1rem;
+}
+
+.spinner {
+  margin: 2rem auto;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: #4CAF50;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.continue_button,
+.retry_button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "GT Bold";
+  transition: background-color 0.3s ease;
+}
+
+.continue_button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.continue_button:hover {
+  background-color: #45a049;
+}
+
+.retry_button {
+  background-color: #f44336;
+  color: white;
+}
+
+.retry_button:hover {
+  background-color: #da190b;
+}
+
+@media (max-width: 600px) {
+  .success_container {
+    padding: 1rem;
+  }
+
+  .loading,
+  .success,
+  .failed {
+    padding: 2rem;
+  }
+}
