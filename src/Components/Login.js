@@ -1,7 +1,11 @@
-import React from 'react';
-import FacebookLogin from 'react-facebook-login';
-import { signInWithGoogle, handleFacebookLogin, handleSignOut } from '../utils/auth';
-import { useAuth } from '../utils/AuthContext';
+import React from "react";
+import FacebookLogin from "react-facebook-login";
+import {
+  signInWithGoogle,
+  handleFacebookLogin,
+  handleSignOut,
+} from "../utils/auth";
+import { useAuth } from "../utils/AuthContext";
 
 const Login = () => {
   const { user } = useAuth();
@@ -9,21 +13,21 @@ const Login = () => {
   const onGoogleSignIn = async () => {
     const result = await signInWithGoogle();
     if (!result.success) {
-      console.error('Google sign-in failed:', result.error);
+      console.error("Google sign-in failed:", result.error);
     }
   };
 
   const responseFacebook = async (response) => {
     const result = await handleFacebookLogin(response);
     if (!result.success) {
-      console.error('Facebook sign-in failed:', result.error);
+      console.error("Facebook sign-in failed:", result.error);
     }
   };
 
   const onSignOut = async () => {
     const result = await handleSignOut();
     if (!result.success) {
-      console.error('Sign out failed:', result.error);
+      console.error("Sign out failed:", result.error);
     }
   };
 
@@ -31,10 +35,7 @@ const Login = () => {
     <div className="login-container">
       {!user ? (
         <>
-          <button
-            onClick={onGoogleSignIn}
-            className="google-login-btn"
-          >
+          <button onClick={onGoogleSignIn} className="google-login-btn">
             Sign in with Google
           </button>
           <FacebookLogin
@@ -48,16 +49,9 @@ const Login = () => {
         </>
       ) : (
         <div className="user-info">
-          <img
-            src={user.photoURL}
-            alt="Profile"
-            className="profile-image"
-          />
+          <img src={user.photoURL} alt="Profile" className="profile-image" />
           <p>Welcome, {user.displayName}</p>
-          <button
-            onClick={onSignOut}
-            className="signout-btn"
-          >
+          <button onClick={onSignOut} className="signout-btn">
             Sign Out
           </button>
         </div>
