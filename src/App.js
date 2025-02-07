@@ -10,7 +10,6 @@ import { AuthProvider } from "./utils/AuthContext";
 import filterNames from "./utils/filterNames";
 import games from "./utils/games";
 import templateGame from "./utils/templateGame";
-import { AuthProvider } from './utils/AuthContext';
 import Login from './Components/Login';
 import Checkout from './Components/Checkout/Checkout';
 import CheckoutSuccess from './Components/Checkout/CheckoutSuccess';
