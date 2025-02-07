@@ -5,10 +5,13 @@ import { ReactComponent as Browse } from "../../Resources/image/browse.svg";
 import { ReactComponent as Cart } from "../../Resources/image/cart.svg";
 import { ReactComponent as GitHub } from "../../Resources/image/github.svg";
 import { ReactComponent as Search } from "../../Resources/image/search.svg";
+import { useAuth } from '../../utils/AuthContext';
+import { signInWithGoogle, handleSignOut } from '../../utils/auth';
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const NavBar = props => { 
+const NavBar = props => {
+    const { user } = useAuth();
     const {
         handleHover,
         hoverState,
@@ -133,6 +136,31 @@ const NavBar = props => {
                   style={{ fill: cartAmount ? "#90ee90" : "transparent", stroke: cartAmount ? "" : "#fff", strokeWidth: "34px" }}
                 />
                 <h3 onClick={handleOpenCart}>Cart: {cartAmount}</h3>
+            </div>
+
+            <div className={styles.auth_container}>
+              {!user ? (
+                <button
+                  className={styles.login_btn}
+                  onClick={signInWithGoogle}
+                >
+                  Sign In
+                </button>
+              ) : (
+                <div className={styles.user_info}>
+                  <img
+                    src={user.photoURL}
+                    alt="Profile"
+                    className={styles.profile_image}
+                  />
+                  <button
+                    className={styles.logout_btn}
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
             </div>
         </div>
       </motion.div>

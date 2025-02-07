@@ -16,8 +16,10 @@ import { AnimatePresence } from "framer-motion";
 import filterNames from "./utils/filterNames";
 import games from "./utils/games";
 import templateGame from "./utils/templateGame";
+import { AuthProvider } from './utils/AuthContext';
+import Login from './Components/Login';
 
-function App() {
+function AppContent() {
   const [currentFilter, setCurrentFilter] = useState("none");
   const [allGames, setAllGames] = useState(games);
   const [cart, setCart] = useState([]);
@@ -479,6 +481,14 @@ function App() {
         />
       </Routes>
     </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 
