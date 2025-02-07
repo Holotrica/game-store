@@ -83,6 +83,7 @@ const Checkout = ({ cart }) => {
     } catch (error) {
       console.error('Error initiating checkout:', error);
       alert('Failed to initiate checkout. Please try again.');
+
       // Log the error for debugging
       console.error('Detailed error:', error);
     }
@@ -96,7 +97,7 @@ const Checkout = ({ cart }) => {
           {cart.map((item) => (
             <div key={item.id} className={styles.cart_item}>
               <img
-                src={item.imageUrl || item.image || '/placeholder-image.jpg'}
+                src={item.cover}
                 alt={item.name}
                 onError={(e) => {
                   e.target.onerror = null;

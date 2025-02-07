@@ -34,50 +34,50 @@ const Grid = props => {
     }, [grid])
 
     return (
-    <>
-          <div className={styles.reviews} style={{ display: reviewDisplay ? "flex" : "none" }}>
-              <h2>There are no reviews yet!</h2>
-              <h3>You can add some, soon.</h3>
-          </div>
-          <div className={styles.gridContainer} style={{ display: reviewDisplay ? "none" : "grid" }} id="gridContainer">
-            {searching === false ? cartDisplayed ? shownGames.map((game, i) => {
-                if (i <= 7) {
-                    return <Card 
-                    game={game} 
-                    key={game.name} 
-                    handleLike={handleLike} 
-                    handleHoverGame={handleHoverGame} 
-                    handleAddToCart={handleAddToCart} 
-                    handleSelectGame={handleSelectGame}
-                    hoverState={hoverState}
-                  />
-                }
-            }) : shownGames.map((game, i) => {
-                return <Card 
-                         game={game} 
-                         key={game.name} 
-                         handleLike={handleLike} 
-                         handleHoverGame={handleHoverGame} 
-                         handleAddToCart={handleAddToCart} 
-                         handleSelectGame={handleSelectGame}
-                         hoverState={hoverState}
-                       />
-            }) : shownGames.map((game, i) => {
-                if (game.name.toLowerCase().includes(search.toLowerCase())) {
-                    return <Card 
-                             game={game} 
-                             key={game.name} 
-                             handleLike={handleLike} 
-                             handleHoverGame={handleHoverGame} 
-                             handleAddToCart={handleAddToCart} 
-                             handleSelectGame={handleSelectGame}
-                             hoverState={hoverState}
-                           />
-                }
-            })}
-          </div>
-    </>
+        <>
+            <div className={styles.reviews} style={{ display: reviewDisplay ? "flex" : "none" }}>
+                <h2>There are no reviews yet!</h2>
+                <h3>You can add some, soon.</h3>
+            </div>
+            <div className={styles.gridContainer} style={{ display: reviewDisplay ? "none" : "grid" }} id="gridContainer">
+                {searching === false ? cartDisplayed ? shownGames.map((game, i) => {
+                    if (i <= 7) {
+                        return <Card
+                            game={game}
+                            key={game.name}
+                            handleLike={handleLike}
+                            handleHoverGame={handleHoverGame}
+                            handleAddToCart={handleAddToCart}
+                            handleSelectGame={handleSelectGame}
+                            hoverState={hoverState}
+                        />
+                    }
+                }) : shownGames.map((game, i) => {
+                    return <Card
+                        game={game}
+                        key={game.name}
+                        handleLike={handleLike}
+                        handleHoverGame={handleHoverGame}
+                        handleAddToCart={handleAddToCart}
+                        handleSelectGame={handleSelectGame}
+                        hoverState={hoverState}
+                    />
+                }) : shownGames.map((game, i) => {
+                    if (game.name.toLowerCase().includes(search.toLowerCase())) {
+                        return <Card
+                            game={game}
+                            key={game.name}
+                            handleLike={handleLike}
+                            handleHoverGame={handleHoverGame}
+                            handleAddToCart={handleAddToCart}
+                            handleSelectGame={handleSelectGame}
+                            hoverState={hoverState}
+                        />
+                    }
+                })}
+            </div>
+        </>
     );
-  }
-  
-  export default Grid;
+}
+
+export default Grid;
