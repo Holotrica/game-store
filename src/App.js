@@ -20,6 +20,7 @@ import { AuthProvider } from './utils/AuthContext';
 import Login from './Components/Login';
 import Checkout from './Components/Checkout/Checkout';
 import CheckoutSuccess from './Components/Checkout/CheckoutSuccess';
+import OrderHistory from './Components/OrderHistory/OrderHistory';
 
 function AppContent() {
   const [currentFilter, setCurrentFilter] = useState("none");
@@ -470,6 +471,12 @@ function AppContent() {
           path="/checkout/success"
           element={
             <CheckoutSuccess />
+          }
+        />
+        <Route
+          path="/order-history"
+          element={
+            <OrderHistory />
           }
         />
         <Route

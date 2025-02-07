@@ -1,7 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config();
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const router = express.Router();
+
+// Enable CORS for all routes
+router.use(cors());
 
 router.post('/create-checkout-session', async (req, res) => {
   try {
@@ -22,6 +30,8 @@ router.post('/create-checkout-session', async (req, res) => {
     }));
 
     // Create Stripe checkout session
+    console.log('Creating checkout session with cart:', cart);
+    
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: lineItems,
