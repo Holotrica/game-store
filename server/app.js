@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use(require('cors')());  // Add CORS middleware
 
 fetchData();
 
@@ -23,11 +24,13 @@ const user = require('./routes/userRoute');
 const product = require('./routes/productRoute');
 const order = require('./routes/orderRoute');
 const payment = require('./routes/paymentRoute');
+const stripe = require('./stripe');
 
 app.use('/api/v1', user);
 app.use('/api/v1', product);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
+app.use('/api', stripe); // Add Stripe routes
 
 // deployment
 __dirname = path.resolve();
