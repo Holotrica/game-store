@@ -1,5 +1,12 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { 
+  getAuth, 
+  GoogleAuthProvider, 
+  FacebookAuthProvider, 
+  signInWithPopup, 
+  signOut 
+} from 'firebase/auth';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -15,6 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const facebookProvider = new FacebookAuthProvider();
 const googleProvider = new GoogleAuthProvider();
 
 export const signInWithGoogle = async () => {
@@ -32,26 +40,19 @@ export const signInWithGoogle = async () => {
   }
 };
 
-export const handleFacebookLogin = async (response) => {
-  if (response.status === 'connected') {
-    const { accessToken, userID } = response;
-    try {
-      return {
-        success: true,
-        accessToken,
-        userID
-      };
-    } catch (error) {
-      return {
-        success: false,
-        error: error.message
-      };
-    }
+export const signInWithFacebook = async () => {
+  try {
+    const result = await signInWithPopup(auth, facebookProvider);
+    return {
+      success: true,
+      user: result.user
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message
+    };
   }
-  return {
-    success: false,
-    error: 'Facebook login failed'
-  };
 };
 
 export const handleSignOut = async () => {
