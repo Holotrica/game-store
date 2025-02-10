@@ -319,6 +319,18 @@ function AppContent() {
   //   navigate("/Game-Store/");
   // }, []);
 
+  /**
+   * useEffect hook to handle page navigation and scrolling behavior
+   * 
+   * This effect:
+   * 1. Resets overlap state to false on route change
+   * 2. Updates browsing state based on current path:
+   *    - False when on home page
+   *    - True for all other pages
+   * 3. Controls page scrolling:
+   *    - Disables scroll on all pages except browse
+   *    - Enables scroll only on browse page
+   */
   useEffect(() => {
     setOverlap(false);
     if (location.pathname === "/Game-Store/") {

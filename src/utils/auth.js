@@ -1,11 +1,11 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  GoogleAuthProvider, 
-  FacebookAuthProvider, 
-  signInWithPopup, 
-  signOut 
+import {
+  getAuth,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  signOut
 } from 'firebase/auth';
 
 // Your Firebase configuration
@@ -28,6 +28,7 @@ const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
+    window.location.href = '/Game-Store/browse';
     return {
       success: true,
       user: result.user
@@ -43,6 +44,7 @@ export const signInWithGoogle = async () => {
 export const signInWithFacebook = async () => {
   try {
     const result = await signInWithPopup(auth, facebookProvider);
+    window.location.href = '/Game-Store/browse';
     return {
       success: true,
       user: result.user
