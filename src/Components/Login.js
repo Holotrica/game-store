@@ -1,61 +1,45 @@
-import React from "react";
-import FacebookLogin from "react-facebook-login";
-import {
-  signInWithGoogle,
-  handleFacebookLogin,
-  handleSignOut,
-} from "../utils/auth";
-import { useAuth } from "../utils/AuthContext";
+import React from 'react';
+import { useAuth } from '../utils/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import './Login.css';
+import { signInWithGoogle } from '../utils/auth';
 
 const Login = () => {
-  const { user } = useAuth();
+  const { loginWithGoogle, loginWithFacebook } = useAuth();
+  const navigate = useNavigate();
 
-  const onGoogleSignIn = async () => {
-    const result = await signInWithGoogle();
-    if (!result.success) {
-      console.error("Google sign-in failed:", result.error);
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate('/');
+    } catch (error) {
+      console.error('Google login error:', error);
     }
   };
 
-  const responseFacebook = async (response) => {
-    const result = await handleFacebookLogin(response);
-    if (!result.success) {
-      console.error("Facebook sign-in failed:", result.error);
-    }
-  };
-
-  const onSignOut = async () => {
-    const result = await handleSignOut();
-    if (!result.success) {
-      console.error("Sign out failed:", result.error);
+  const handleFacebookLogin = async () => {
+    try {
+      await loginWithFacebook();
+      navigate('/');
+    } catch (error) {
+      console.error('Facebook login error:', error);
     }
   };
 
   return (
     <div className="login-container">
-      {!user ? (
-        <>
-          <button onClick={onGoogleSignIn} className="google-login-btn">
-            Sign in with Google
-          </button>
-          <FacebookLogin
-            appId={process.env.REACT_APP_FACEBOOK_APP_ID}
-            autoLoad={false}
-            fields="name,email,picture"
-            callback={responseFacebook}
-            cssClass="facebook-login-btn"
-            icon="fa-facebook"
-          />
-        </>
-      ) : (
-        <div className="user-info">
-          <img src={user.photoURL} alt="Profile" className="profile-image" />
-          <p>Welcome, {user.displayName}</p>
-          <button onClick={onSignOut} className="signout-btn">
-            Sign Out
-          </button>
-        </div>
-      )}
+      <h2>Sign in</h2>
+      <p>to continue to Game Store</p>
+      <div className="social-buttons">
+        <button className="facebook-btn" onClick={loginWithFacebook}>
+          <img src="/Facebook.png" alt="Facebook" />
+          Continue with Facebook
+        </button>
+        <button className="google-btn" onClick={signInWithGoogle}>
+          <img src="/Google.png" alt="Google" />
+          Continue with Google
+        </button>
+      </div>
     </div>
   );
 };

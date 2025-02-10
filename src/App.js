@@ -10,10 +10,10 @@ import { AuthProvider } from "./utils/AuthContext";
 import filterNames from "./utils/filterNames";
 import games from "./utils/games";
 import templateGame from "./utils/templateGame";
-import Login from './Components/Login';
 import Checkout from './Components/Checkout/Checkout';
 import CheckoutSuccess from './Components/Checkout/CheckoutSuccess';
 import OrderHistory from './Components/OrderHistory/OrderHistory';
+import Login from "./Components/Login";
 
 function AppContent() {
   const [currentFilter, setCurrentFilter] = useState("none");
@@ -471,6 +471,10 @@ function AppContent() {
           element={
             <OrderHistory />
           }
+        />
+        <Route
+          path="/login"
+          element={<Login />}
         />
         <Route
           path="*"

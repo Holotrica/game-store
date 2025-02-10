@@ -34,10 +34,8 @@ export const signInWithGoogle = async () => {
 
 export const handleFacebookLogin = async (response) => {
   if (response.status === 'connected') {
-    // You can use the accessToken to authenticate with your backend
     const { accessToken, userID } = response;
     try {
-      // Make API call to your backend with the token
       return {
         success: true,
         accessToken,

@@ -2,64 +2,63 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 2rem;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
-.google-login-btn,
-.facebook-login-btn,
-.signout-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  width: 220px;
+.login-container h2 {
+  margin-bottom: 8px;
+  color: #202124;
+}
+
+.login-container p {
+  margin-bottom: 32px;
+  color: #5f6368;
+}
+
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.social-buttons button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-}
-
-.google-login-btn {
-  background-color: #ffffff;
-  color: #757575;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
   border: 1px solid #dadce0;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
 }
 
-.google-login-btn:hover {
+.social-buttons button:hover {
   background-color: #f8f9fa;
 }
 
-.facebook-login-btn {
-  background-color: #1877f2;
+.social-buttons button img {
+  width: 18px;
+  height: 18px;
+}
+
+.facebook-btn {
   color: white;
+  background-color: #1877f2 !important;
 }
 
-.facebook-login-btn:hover {
-  background-color: #166fe5;
+.facebook-btn:hover {
+  background-color: #166fe5 !important;
 }
 
-.signout-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.signout-btn:hover {
-  background-color: #bb2d3b;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.profile-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
+.google-btn {
+  color: #3c4043;
 }

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Browse } from "../../Resources/image/browse.svg";
 import { ReactComponent as Cart } from "../../Resources/image/cart.svg";
 import { ReactComponent as GitHub } from "../../Resources/image/github.svg";
@@ -145,9 +145,9 @@ const NavBar = (props) => {
 
           <div className={styles.auth_container}>
             {!user ? (
-              <button className={styles.login_btn} onClick={signInWithGoogle}>
+              <Link to="/login" className={styles.login_btn}>
                 Sign In
-              </button>
+              </Link>
             ) : (
               <div className={styles.user_info}>
                 <img
